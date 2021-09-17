@@ -3,14 +3,15 @@ class ArtsController < ApplicationController
 
   # GET /arts
   def index
-    @arts = Art.all
+    arts = Art.all
 
-    render json: @arts
+    render json: ArtSerializer.new(arts, {include: [:category]})
   end
 
   # GET /arts/1
   def show
-    render json: @art
+
+    render json: ArtSerializer.new(@art, {include: [:category]})
   end
 
   # POST /arts
