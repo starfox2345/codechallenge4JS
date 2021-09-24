@@ -7,7 +7,10 @@ class ArtService {
         fetch(`${this.baseUrl}/arts`)
         .then(resp => resp.json())
         .then(data => {
-            debugger
+            data.data.forEach((art) => {
+                const newArt = new Art({id: art.id, ...art.attributes})
+                
+            })
         })
     }
 }
